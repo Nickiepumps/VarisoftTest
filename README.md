@@ -1,2 +1,2 @@
 # VarisoftTest
-This repo is used for Varisoft internship test
+This repo is used for Varisoft internship testing
