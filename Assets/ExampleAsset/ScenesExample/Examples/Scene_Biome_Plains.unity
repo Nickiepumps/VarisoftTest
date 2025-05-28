@@ -2074,7 +2074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a041ba33bfa57a4b88538c79809c8a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magicBulletPrefab: {fileID: 4695025494609452389, guid: c1ce4a9cff23ad4479e1ccb2169fd444, type: 3}
+  magicBulletPrefab: {fileID: 128738391128686060, guid: c1ce4a9cff23ad4479e1ccb2169fd444, type: 3}
   poolSize: 10
 --- !u!4 &570277030
 Transform:

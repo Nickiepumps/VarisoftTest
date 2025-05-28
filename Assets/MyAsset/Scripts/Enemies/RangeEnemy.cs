@@ -6,6 +6,7 @@ using UnityEngine;
 public class RangeEnemy : Enemie
 {
     [SerializeField] private Transform enemyBulletPivot;
+    [SerializeField] private Transform enemyBulletSpawner;
     [SerializeField] private float attackRange = 5f;
     [SerializeField] private float attackSpeed = 3f;
     private float attackCooldown = 0;
@@ -16,7 +17,7 @@ public class RangeEnemy : Enemie
         float distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
         if (enemyHealth <= 0)
         {
-            gameObject.SetActive(false);
+            StartCoroutine(EnemyDeadExplosion());
         }
         if (distanceToPlayer <= attackRange && player.activeSelf == true)
         {
@@ -42,7 +43,7 @@ public class RangeEnemy : Enemie
         isAttack = true;
         enemyAnimator.SetBool("IsAttack", true);
         yield return new WaitForSeconds(0.3f);
-        GameObject enemyBullet = Instantiate(enemyBulletPrefab, enemyBulletPivot.transform.transform.position, enemyBulletPivot.localRotation);
+        GameObject enemyBullet = Instantiate(enemyBulletPrefab, enemyBulletSpawner.position, enemyBulletPivot.localRotation);
         enemyBullet.GetComponent<Bullet>().bulletDirection = enemyBulletPivot.up; // Set the bullet direction to the pivot's up direction (y axis)
         enemyBullet.GetComponent<Bullet>().bulletDamage = enemyDamage;
         enemyAnimator.SetBool("IsAttack", false);

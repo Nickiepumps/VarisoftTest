@@ -12,7 +12,7 @@ public class MeleeEnemy : Enemie
     {
         if (enemyHealth <= 0)
         {
-            gameObject.SetActive(false);
+            StartCoroutine(EnemyDeadExplosion());
         }
     }
     private void FixedUpdate()

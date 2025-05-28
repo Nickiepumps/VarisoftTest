@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerBullet : Bullet
 {
-    private Transform playerPos;
+    private Transform playerBulletSpawnPos;
     private void OnEnable()
     {
-        if(playerPos == null)
+        /*if(playerBulletSpawnPos == null)
         {
-            playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        }
-        gameObject.transform.position = playerPos.position;
+            playerBulletSpawnPos = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().bulletAimPivot.transform;
+        }*/
+        //gameObject.transform.position = playerBulletSpawnPos.position;
     }
     private void FixedUpdate()
     {

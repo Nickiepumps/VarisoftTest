@@ -8,6 +8,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private BulletPoolManager bulletPoolManager;
     [SerializeField] private InputActionAsset attckInputAction;
     private InputAction attackAction;
+    [SerializeField] private Transform bulletAimPivot;
     [SerializeField] private Transform bulletSpawnPoint;
 
     // Arrays of bulletSpawnpoint euler angle.
@@ -65,28 +66,28 @@ public class PlayerAttack : MonoBehaviour
             switch (stepCount)
             {
                 case 0:
-                    bulletSpawnPoint.localRotation = Quaternion.Euler(bulletSpawnRotArr[0]);
+                    bulletAimPivot.localRotation = Quaternion.Euler(bulletSpawnRotArr[0]);
                     break;
                 case 1:
-                    bulletSpawnPoint.localRotation = Quaternion.Euler(bulletSpawnRotArr[1]);
+                    bulletAimPivot.localRotation = Quaternion.Euler(bulletSpawnRotArr[1]);
                     break;
                 case 2:
-                    bulletSpawnPoint.localRotation = Quaternion.Euler(bulletSpawnRotArr[2]);
+                    bulletAimPivot.localRotation = Quaternion.Euler(bulletSpawnRotArr[2]);
                     break;
                 case 3:
-                    bulletSpawnPoint.localRotation = Quaternion.Euler(bulletSpawnRotArr[3]);
+                    bulletAimPivot.localRotation = Quaternion.Euler(bulletSpawnRotArr[3]);
                     break;
                 case 4:
-                    bulletSpawnPoint.localRotation = Quaternion.Euler(bulletSpawnRotArr[4]);
+                    bulletAimPivot.localRotation = Quaternion.Euler(bulletSpawnRotArr[4]);
                     break;
                 case 5:
-                    bulletSpawnPoint.localRotation = Quaternion.Euler(bulletSpawnRotArr[5]);
+                    bulletAimPivot.localRotation = Quaternion.Euler(bulletSpawnRotArr[5]);
                     break;
                 case 6:
-                    bulletSpawnPoint.localRotation = Quaternion.Euler(bulletSpawnRotArr[6]);
+                    bulletAimPivot.localRotation = Quaternion.Euler(bulletSpawnRotArr[6]);
                     break;
                 case 7:
-                    bulletSpawnPoint.localRotation = Quaternion.Euler(bulletSpawnRotArr[7]);
+                    bulletAimPivot.localRotation = Quaternion.Euler(bulletSpawnRotArr[7]);
                     break;
             }
         }
@@ -96,8 +97,9 @@ public class PlayerAttack : MonoBehaviour
         GameObject bullet = bulletPoolManager.CheckAvailableBullet();
         if(bullet != null)
         {
-            bullet.transform.localRotation = bulletSpawnPoint.localRotation;
-            bullet.GetComponent<Bullet>().bulletDirection = bulletSpawnPoint.up;
+            bullet.transform.localRotation = bulletAimPivot.localRotation;
+            bullet.GetComponent<Bullet>().bulletDirection = bulletAimPivot.up;
+            bullet.transform.position = bulletSpawnPoint.position;
             bullet.SetActive(true);
         }
     }

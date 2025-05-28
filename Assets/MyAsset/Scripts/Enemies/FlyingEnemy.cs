@@ -11,7 +11,7 @@ public class FlyingEnemy : Enemie
     {
         if (enemyHealth <= 0)
         {
-            gameObject.SetActive(false);
+            StartCoroutine(EnemyDeadExplosion());
         }
     }
     private void FixedUpdate()
