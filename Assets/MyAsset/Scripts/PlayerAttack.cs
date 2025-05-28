@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerAttack : MonoBehaviour
 {
-    private IsometricPlayerMovementController playerMovement;
+    private PlayerMovementController playerMovement;
     [SerializeField] private BulletPoolManager bulletPoolManager;
     [SerializeField] private InputActionAsset attckInputAction;
     private InputAction attackAction;
@@ -33,7 +33,7 @@ public class PlayerAttack : MonoBehaviour
     }
     private void Awake()
     {
-        playerMovement = GetComponent<IsometricPlayerMovementController>();
+        playerMovement = GetComponent<PlayerMovementController>();
         attackAction = attckInputAction.FindAction("Attack");
     }
     private void Update()
@@ -97,7 +97,7 @@ public class PlayerAttack : MonoBehaviour
         if(bullet != null)
         {
             bullet.transform.localRotation = bulletSpawnPoint.localRotation;
-            bullet.GetComponent<Bullet>().direction = bulletSpawnPoint.up;
+            bullet.GetComponent<Bullet>().bulletDirection = bulletSpawnPoint.up;
             bullet.SetActive(true);
         }
     }
