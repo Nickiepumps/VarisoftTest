@@ -13,6 +13,8 @@ public class PlayerHealth : MonoBehaviour
     }
     private void Update()
     {
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); // Clamp player health where min = 0 and max = maxHealth
+        healthAmountText.text = "X" + currentHealth.ToString();
         if (currentHealth <= 0)
         {
             gameObject.SetActive(false);
@@ -24,8 +26,6 @@ public class PlayerHealth : MonoBehaviour
         {
             // Reduce the player health if collide with an enemy damage trigger
             currentHealth -= collision.GetComponent<Enemie>().enemyDamage;
-            currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-            healthAmountText.text = "X" + currentHealth.ToString();
         }
     }
 }
