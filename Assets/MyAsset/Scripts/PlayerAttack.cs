@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerAttack : MonoBehaviour
@@ -16,13 +14,13 @@ public class PlayerAttack : MonoBehaviour
     private Vector3[] bulletSpawnRotArr = new Vector3[] 
     {
         Vector3.zero,
-        new Vector3(0, 0, 45),
+        new Vector3(0, 0, 60),
         new Vector3(0, 0, 90),
-        new Vector3(0, 0, 135),
+        new Vector3(0, 0, 120),
         new Vector3(0, 0, 180),
-        new Vector3(0, 0, -135),
+        new Vector3(0, 0, -120),
         new Vector3(0, 0, -90),
-        new Vector3(0, 0, -45)
+        new Vector3(0, 0, -60)
     };
     private void OnEnable()
     {

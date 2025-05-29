@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MeleeEnemy : Enemie
@@ -12,6 +11,7 @@ public class MeleeEnemy : Enemie
     {
         if (enemyHealth <= 0)
         {
+            // Enable explosion fx when hp = 0
             StartCoroutine(EnemyDeadExplosion());
         }
     }
@@ -21,6 +21,7 @@ public class MeleeEnemy : Enemie
         EnemySpriteDirection(player.transform);
         if (distanceToPlayer <= chasingRange && distanceToPlayer > 0.8f)
         {
+            // Start chasing the player when reaching the chasing range
             enemyAnimator.SetBool("IsAttack", false);
             enemyAnimator.SetBool("IsRun", true);
             Vector2 enemyMovement = Vector2.MoveTowards(transform.position, player.transform.position, walkSpeed * Time.fixedDeltaTime);
@@ -28,15 +29,17 @@ public class MeleeEnemy : Enemie
         }
         else if(distanceToPlayer <= 0.8f && player.gameObject.activeSelf == true)
         {
+            // Attack the player when get too close
             if(isAttack == false)
             {
                 enemyAnimator.SetBool("IsAttack", true);
                 enemyAnimator.SetBool("IsRun", false);
-                StartCoroutine(EnemyMelee());
+                StartCoroutine(EnemyMelee()); // Enemy start attacking the player
             }
         }
         else
         {
+            // Change to Idle
             enemyAnimator.SetBool("IsAttack", false);
             enemyAnimator.SetBool("IsRun", false);
         }
@@ -47,11 +50,9 @@ public class MeleeEnemy : Enemie
         // Play Attack anim
         yield return new WaitForSeconds(0.48f);
         damageTrigger.enabled = true;
-        Debug.Log("Hit Player");
         yield return new WaitForSeconds(0.05f);
         damageTrigger.enabled = false;
         yield return new WaitForSeconds(0.13f);
-        
         isAttack = false;
     }
     private void OnDrawGizmosSelected()

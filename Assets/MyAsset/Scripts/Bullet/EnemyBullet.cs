@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBullet : Bullet
@@ -21,7 +19,6 @@ public class EnemyBullet : Bullet
     {
         if (collision.transform.tag == "Player")
         {
-            Debug.Log("Hit Player");
             collision.gameObject.GetComponent<PlayerHealth>().currentHealth -= bulletDamage;
             Destroy(gameObject);
         }

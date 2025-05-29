@@ -1,18 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerBullet : Bullet
 {
-    private Transform playerBulletSpawnPos;
-    private void OnEnable()
-    {
-        /*if(playerBulletSpawnPos == null)
-        {
-            playerBulletSpawnPos = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().bulletAimPivot.transform;
-        }*/
-        //gameObject.transform.position = playerBulletSpawnPos.position;
-    }
     private void FixedUpdate()
     {
         Vector2 bulletMovement = bulletDirection * travelSpeed * Time.fixedDeltaTime;

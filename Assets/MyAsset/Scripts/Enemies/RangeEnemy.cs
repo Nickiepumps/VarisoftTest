@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RangeEnemy : Enemie
@@ -17,24 +15,27 @@ public class RangeEnemy : Enemie
         float distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
         if (enemyHealth <= 0)
         {
+            // Enable explosion fx when hp = 0
             StartCoroutine(EnemyDeadExplosion());
         }
         if (distanceToPlayer <= attackRange && player.activeSelf == true)
         {
+            // Start attacking the player when reaching the attack range
             EnemySpriteDirection(player.transform);
             EnemyAim(); // Rotate the pivot toward the player;
             if(attackCooldown <= 0 && isAttack == false)
             {
-                StartCoroutine(ShootPlayer());
+                StartCoroutine(ShootPlayer()); // Attack when cooldown = 0
             }
             else
             {
+                // Don't attack and continue cooldown if it not reaching 0
                 attackCooldown -= Time.deltaTime;
             }
-            
         }
         else
         {
+            // Change to Idle
             enemyAnimator.SetBool("IsAttack", false);
         }
     }

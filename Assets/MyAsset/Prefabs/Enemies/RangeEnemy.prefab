@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 4501212625698435858}
   - component: {fileID: 4417874130282142081}
   - component: {fileID: 2074512930239175852}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RangeEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ MonoBehaviour:
   enemyBulletSpawner: {fileID: 5219839765885967522}
   attackRange: 4
   attackSpeed: 3
-  enemyBulletPrefab: {fileID: 8280515218874106493, guid: dcb5dcc234a651a46adca43ac5e3d339, type: 3}
+  enemyBulletPrefab: {fileID: 128738391128686060, guid: 5268fcb1847bd804eb88b8f6fc10db0e, type: 3}
 --- !u!1 &7370686102333289332
 GameObject:
   m_ObjectHideFlags: 0

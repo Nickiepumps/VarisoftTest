@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FlyingEnemy : Enemie
@@ -11,6 +10,7 @@ public class FlyingEnemy : Enemie
     {
         if (enemyHealth <= 0)
         {
+            // Enable explosion fx when hp = 0
             StartCoroutine(EnemyDeadExplosion());
         }
     }
@@ -22,11 +22,13 @@ public class FlyingEnemy : Enemie
             enemyAnimator.SetBool("IsAttack", true);
             if (isAttack == false)
             {
+                // Start attacking the player when get too close
                 StartCoroutine(FlyingEnemyAttack());
             }   
         }
         else
         {
+            // Continue chasing the player if the player is not too close 
             enemyAnimator.SetBool("IsAttack", false);
             Vector2 direction = Vector2.MoveTowards(transform.position, player.transform.position, movementSpeed * Time.fixedDeltaTime);
             enemyRB.MovePosition(direction);
@@ -36,7 +38,6 @@ public class FlyingEnemy : Enemie
     {
         isAttack = true;
         yield return new WaitForSeconds(0.7f);
-        Debug.Log("Flying Enemy Hit");
         damageTrigger.enabled = true;
         yield return new WaitForSeconds(0.05f);
         damageTrigger.enabled = false;
